@@ -10,14 +10,14 @@ use PHPUnit\Framework\TestCase;
 use Playground\Math\Number;
 
 #[CoversClass(Number::class)]
-class NumberTest extends TestCase
+final class NumberTest extends TestCase
 {
     #[TestWith([2])]
     #[TestWith([-10])]
     #[TestWith([42])]
     public function testEvenNumbers(int $number): void
     {
-        self::assertSame('Even', new Number()->isEvenOrOdd($number));
+        self::assertSame('Even', new Number($number)->isEvenOrOdd());
     }
 
     #[TestWith([3])]
@@ -25,6 +25,6 @@ class NumberTest extends TestCase
     #[TestWith([99])]
     public function testOddNumbers(int $number): void
     {
-        self::assertSame('Odd', new Number()->isEvenOrOdd($number));
+        self::assertSame('Odd', new Number($number)->isEvenOrOdd());
     }
 }

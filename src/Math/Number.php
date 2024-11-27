@@ -4,18 +4,23 @@ declare(strict_types=1);
 
 namespace Playground\Math;
 
-class Number
+final readonly class Number
 {
+    /**
+     * Promotes properties.
+     *
+     * @param int $number
+     */
+    public function __construct(private int $number) {}
+
     /**
      * Checks if the given number is even or odd.
      *
-     * @param int $number Number to check
-     *
      * @return string "Even" for eben numbers and "Odd" for odd numbers
      */
-    public function isEvenOrOdd(int $number): string
+    public function isEvenOrOdd(): string
     {
-        if ($number % 2 === 0) {
+        if ($this->number % 2 === 0) {
             return 'Even';
         }
 

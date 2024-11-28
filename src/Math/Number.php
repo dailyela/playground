@@ -26,4 +26,24 @@ final readonly class Number
 
         return 'Odd';
     }
+
+    /**
+     * Checks if the given number is a prime number.
+     *
+     * @return bool True if the number is a prime number, false otherwise
+     */
+    public function isPrime(): bool
+    {
+        if ($this->number === 1) {
+            return false;
+        }
+
+        for ($i = 2; $i <= $this->number / 2; $i++) {
+            if ($this->number % $i === 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

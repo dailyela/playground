@@ -27,4 +27,20 @@ final class NumberTest extends TestCase
     {
         self::assertSame('Odd', new Number($number)->isEvenOrOdd());
     }
+
+    #[TestWith([7])]
+    #[TestWith([89])]
+    #[TestWith([593])]
+    public function testPrimeNumbers(int $number): void
+    {
+        self::assertTrue(new Number($number)->isPrime());
+    }
+
+    #[TestWith([1])]
+    #[TestWith([12])]
+    #[TestWith([78])]
+    public function testNotPrimeNumbers(int $number): void
+    {
+        self::assertFalse(new Number($number)->isPrime());
+    }
 }

@@ -43,4 +43,17 @@ final class NumberTest extends TestCase
     {
         self::assertFalse(new Number($number)->isPrime());
     }
+
+    /**
+     * @param int $number Number to get divisors from
+     * @param list<int> $divisors List of divisors
+     */
+    #[TestWith([20, [1, 2, 4, 5, 10, 20]])]
+    #[TestWith([50, [1, 2, 5, 10, 25, 50]])]
+    #[TestWith([100, [1, 2, 4, 5, 10, 20, 25, 50, 100]])]
+    #[TestWith([7, [1, 7]])]
+    public function testGetDivisors(int $number, array $divisors): void
+    {
+        self::assertSame($divisors, new Number($number)->divisors());
+    }
 }

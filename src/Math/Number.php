@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Playground\Math;
 
+use LogicException;
+
 final readonly class Number
 {
     /**
@@ -45,5 +47,28 @@ final readonly class Number
         }
 
         return true;
+    }
+
+    /**
+     * Determines the divisors of the specified number.
+     *
+     * @return list<int> Divisors
+     */
+    public function divisors(): array
+    {
+       $divisors = [];
+
+        if ($this->number <= 1) {
+            throw new LogicException('The number must be greater than 1.');
+        }
+
+        for ($i = 1; $i <= $this->number; $i++)
+        {
+            if ($this->number % $i === 0) {
+                $divisors[] = $i;
+            }
+        }
+
+        return $divisors;
     }
 }
